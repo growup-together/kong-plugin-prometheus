@@ -52,8 +52,8 @@ local function log(message)
     return
   end
 
-  local service_name = message.service and message.service.name or
-                       message.service.host
+  local service_name = message.service and (message.service.name or
+                       message.service.host)
   service_name = service_name or ""
 
   metrics.status:inc(1, { message.response.status, service_name })
